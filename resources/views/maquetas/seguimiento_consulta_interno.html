@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Transparencia y Reportería RSH - CSE, Ministerio de Desarrollo Social y Familia</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+  <link href="../css/main.css" rel="stylesheet" type="text/css">
+
+  <!--fonts-->
+  <link rel="stylesheet" href="../fonts/mdi/css/materialdesignicons.min.css" type="text/css">
+</head>
+
+<body class="bg-body">
+  <header class="header">
+    <nav class="navbar navbar-expand-md navbar-light bg-white mb-4 pt-0">
+      <div class="container"> <a class="navbar-brand pt-0" href="#"> <img src="../images/logo_cse-rsh.png"
+            class="mr-5 pr-5"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span
+            class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item "> <a class="nav-link" href="index.html"><i class="mdi mdi-home"></i> Inicio <span
+                  class="sr-only">(current)</span></a> </li>
+            <li class="nav-item active"> <a class="nav-link" href="#"><i class="mdi mdi-account-circle"></i> Nombre
+                Apellido</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i
+                  class="mdi mdi-close-circle"></i> Cerrar sesión</a> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="banner-home2">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 col-md-6">
+          <h2 class="text-white">Seguimiento de consultas</h2>
+        </div>
+        <div class="col-4 col-md-6 text-right"><small class="text-white">
+            <time>{{(new DateTime("now", new DateTimeZone('America/Santiago')))->format('H:m d/m/Y')}}</time>
+          </small></div>
+      </div>
+    </div>
+  </section>
+  <section class="main">
+    <div class="container-fluid">
+      <div class="card my-3 shadow-sm">
+        <div class="card-body">
+          <ul class="nav nav-tabs flex-column flex-lg-row mx-3">
+            <li class="nav-item"> <a class="nav-link text-black-50" href="escritorio_interno.html">Escritorio</a> </li>
+            <li class="nav-item"> <a class="nav-link text-black-50" href="consulta_run_lote.html">Consulta por RUN o
+                lote</a> </li>
+            <li class="nav-item"> <a class="nav-link active" href="seguimiento_consulta_interno.html">Seguimiento de
+                consultas</a> </li>
+          </ul>
+          <div class="row p-3">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body p-4">
+                  <div class="row align-items-center">
+                    <div class="col-md-5 mb-3 mb-md-0">
+                      <div class="form-row align-items-center">
+                        <div class="col-md-3 d-flex mb-1"><i class="mdi mdi-magnify mr-1"></i> Buscar por RUN</div>
+                        <div class="col-md-9">
+                          <form class="needs-validation" novalidate>
+                            <div class="form-row">
+                              <div class="col-md-8 mb-2">
+                                <label class="sr-only" for="run">RUN</label>
+                                <input type="text" autofocus="autofocus" class="form-control" id="run"
+                                  placeholder="12345678-9" autocomplete="on">
+                                <small id="run-info" class="form-text text-muted">Ingrese rut sin puntos y dígito
+                                  verificador</small>
+                                <div class="valid-feedback"> Correcto </div>
+                                <!-- Cuando hay error <div class="invalid-feedback"> Run no pertenece al registro Social de Hogares </div>-->
+                              </div>
+                              <button type="submit" class="btn btn-primary mb-2 col-md-3 mx-1">Buscar</button>
+                            </div>
+
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-7 mb-3 mb-md-0">
+                      <div class="form-row align-items-center">
+                        <div class="col-md-2 d-flex mb-1"><i class="mdi mdi-magnify mr-1"></i> Buscar por fechas</div>
+                        <div class="col-md-10">
+                          <form class="form-row">
+                            <div class="col-md-3">
+                              <label class="sr-only" for="fechainicio">Fecha de inicio</label>
+                              <input type="date" class="form-control mb-2 mb-md-0" id="fechainicio" name="fecha"
+                                value="" min="2020-01-01" max="2030-12-31">
+                            </div>
+                            <div class="col-md-3">
+                              <label class="sr-only" for="fechafinal">Fecha final</label>
+                              <input type="date" class="form-control mb-2 mb-md-0" id="fechafinal" name="fecha" value=""
+                                min="2020-01-01" max="2030-12-31">
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-2 col-md-2 mx-1">Buscar</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 p-3">
+              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="pills-run-tab" data-toggle="pill" href="#pills-run" role="tab"
+                    aria-controls="pills-run" aria-selected="true">Consultas por RUN</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="pills-lote-tab" data-toggle="pill" href="#pills-lote" role="tab"
+                    aria-controls="pills-lote" aria-selected="false">Consultas por lote</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabContent">
+                <!--tabla por run-->
+                <div class="tab-pane fade show active" id="pills-run" role="tabpanel" aria-labelledby="pills-run-tab">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">RUN</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Razón consulta</th>
+                          <th scope="col">Reporte</th>
+                          <th scope="col">Meses</th>
+                          <th scope="col">Fecha solicitud</th>
+                          <th scope="col">Justificación</th>
+                          <th scope="col">Estado</th>
+                          <th scope="col">Resumen</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>12.345.678-9</td>
+                          <td>Nombre Nombre Apellido Apellido</td>
+                          <td>Respuesta plataforma de transparencia</td>
+                          <td>Reporte básico</td>
+                          <td>3 meses</td>
+                          <td>08-10-2020</td>
+                          <td><button type="button" class="btn btn-info btn-sm"><i class="mdi mdi-file-download"></i>
+                              Justificación</button></td>
+                          <td>Enviado</td>
+                          <td>
+                            <div class="d-flex flex-column flex-lg-row">
+                              <button type="button" class="btn btn-success btn-sm btn-table mr-lg-2">
+                                <i class="mdi mdi-file-download"></i>
+                                Reporte
+                              </button>
+                              <button type="button" class="btn btn-primary btn-sm btn-table">
+                                <i class="mdi mdi-eye"></i>
+                                Ver
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <nav aria-label="Página de navegación">
+                      <ul class="pagination">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Antes">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Siguiente">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+
+                </div>
+                <!--tabla por lote-->
+                <div class="tab-pane fade" id="pills-lote" role="tabpanel" aria-labelledby="pills-lote-tab">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Nombre consulta</th>
+                          <th scope="col">Archivo</th>
+                          <th scope="col">Razón consulta</th>
+                          <th scope="col">Reporte</th>
+                          <th scope="col">Meses</th>
+                          <th scope="col">Fecha solicitud</th>
+                          <th scope="col">Justificación</th>
+                          <th scope="col">Estado</th>
+                          <th scope="col">Resumen</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Consulta noviembre de 2019, comuna 1</td>
+                          <td>RUN_101202020.csv </td>
+                          <td>Respuesta plataforma de transparencia</td>
+                          <td>Reporte básico</td>
+                          <td>3 meses</td>
+                          <td>08-10-2020</td>
+                          <td><button type="button" class="btn btn-info btn-sm"><i class="mdi mdi-file-download"></i>
+                              Justificación</button></td>
+                          <td>Enviado</td>
+                          <td>
+                            <div class="d-flex flex-column flex-lg-row">
+                              <button type="button" class="btn btn-success btn-sm btn-table mr-lg-2">
+                                <i class="mdi mdi-file-download"></i>
+                                Reporte
+                              </button>
+                              <button type="button" class="btn btn-primary btn-sm btn-table">
+                                <i class="mdi mdi-eye"></i>
+                                Ver
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Consulta noviembre de 2019, comuna 1</td>
+                          <td>RUN_101202020.csv </td>
+                          <td>Respuesta plataforma de transparencia</td>
+                          <td>Reporte básico</td>
+                          <td>3 meses</td>
+                          <td>08-10-2020</td>
+                          <td><button type="button" class="btn btn-info btn-sm"><i class="mdi mdi-file-download"></i>
+                              Justificación</button></td>
+                          <td>Enviado</td>
+                          <td>
+                            <div class="d-flex flex-column flex-lg-row">
+                              <button type="button" class="btn btn-success btn-sm btn-table mr-lg-2">
+                                <i class="mdi mdi-file-download"></i>
+                                Reporte
+                              </button>
+                              <button type="button" class="btn btn-primary btn-sm btn-table">
+                                <i class="mdi mdi-eye"></i>
+                                Ver
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <nav aria-label="Página de navegación">
+                      <ul class="pagination">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Antes">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Siguiente">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container"><a href="http://www.desarrollosocialyfamilia.gob.cl/" target="_blank"><img
+          src="../images/logo-mds-extend.svg" alt="Ministerio de Desarrollo Social"
+          title="Ministerio de Desarrollo Social"></a></div>
+  </footer>
+</body>
+<script>// Tooltip y Popovers
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  })
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.slim.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/custom.js"></script>
+
+</html>

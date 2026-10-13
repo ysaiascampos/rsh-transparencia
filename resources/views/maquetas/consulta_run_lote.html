@@ -1,0 +1,440 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Transparencia y Reportería RSH - CSE, Ministerio de Desarrollo Social y Familia</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+  <link href="../css/main.css" rel="stylesheet" type="text/css">
+
+  <!--fonts-->
+  <link rel="stylesheet" href="../fonts/mdi/css/materialdesignicons.min.css" type="text/css">
+</head>
+
+<body class="bg-body">
+  <header class="header">
+    <nav class="navbar navbar-expand-md navbar-light bg-white mb-4 pt-0">
+      <div class="container"> <a class="navbar-brand pt-0" href="#"> <img src="../images/logo_cse-rsh.png"
+            class="mr-5 pr-5"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span
+            class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item "> <a class="nav-link" href="index.html"><i class="mdi mdi-home"></i> Inicio <span
+                  class="sr-only">(current)</span></a> </li>
+            <li class="nav-item active"> <a class="nav-link" href="#"><i class="mdi mdi-account-circle"></i> Nombre
+                Apellido</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i
+                  class="mdi mdi-close-circle"></i> Cerrar sesión</a> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="banner-home2">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 col-md-6">
+          <h2 class="text-white">Consulta por RUN</h2>
+        </div>
+        <div class="col-4 col-md-6 text-right"><small class="text-white">
+            <time>{{(new DateTime("now", new DateTimeZone('America/Santiago')))->format('H:m d/m/Y')}}</time>
+          </small></div>
+      </div>
+    </div>
+  </section>
+  <section class="main">
+    <div class="container">
+      <div class="card my-3 shadow-sm">
+        <div class="card-body">
+          <ul class="nav nav-tabs flex-column flex-lg-row mx-3">
+            <li class="nav-item"> <a class="nav-link text-black-50" href="escritorio_interno.html">Escritorio</a> </li>
+            <li class="nav-item"> <a class="nav-link active" href="consulta_run_lote.html">Consulta por RUN o lote</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link text-black-50" href="seguimiento_consulta_interno.html">Seguimiento
+                de consultas</a> </li>
+          </ul>
+          <div class="row p-3">
+            <div class="col-12">
+              <ol class="timeline">
+                <!--paso 1-->
+                <li>
+                  <h5>Ingrese RUN a consultar o carga por lote</h5>
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                          <div class="col-md-9 mb-3">
+                            <label class="sr-only" for="run">RUN</label>
+                            <input type="text" autofocus="autofocus" required="required"
+                              class="form-control mb-2 mr-sm-2" id="run" placeholder="12345678-9" size="10">
+                            <small id="" class="form-text text-muted">Ingrese rut sin puntos y dígito
+                              verificador</small>
+                            <div class="valid-feedback"> Correcto </div>
+                            <!-- Cuando hay error <div class="invalid-feedback"> Run no pertenece al registro Social de Hogares </div>-->
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <button type="submit" class="btn btn-primary mb-2 w-100">Consultar</button>
+                          </div>
+                        </div>
+                      </form>
+                      <!--Caja que aparece una vez consultado run
+					 <div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Nombre Nombre Apellido Apellido</h5>
+
+    <p class="card-text"><small>RUN</small> <br>
+      <strong class="text-primary">12.345.678-9</strong></p>
+
+  </div>
+</div> -->
+
+
+                      <p class="mb-1">Consultar por lote de RUN</p>
+                      <div class="row no-gutters ">
+                        <div class="col-12 col-md-9 pr-md-2">
+                          <a class="btn btn-success mb-2 w-100"
+                             href="#"
+                             role="button">
+                            <i class="mdi mdi-file-download"></i>
+                            Descargar plantilla para carga por lote
+                          </a>
+                        </div>
+                        <div class="col-12 col-md-3">
+                          <button type="submit"
+                                  class="btn btn-primary mb-2 w-100"
+                                  data-toggle="modal"
+                                  data-target="#lote">
+                                  Consultar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="alert alert-primary" role="alert"><i class="mdi mdi-information"></i> Recuerde que
+                        puede consultar solo por usuarios registrados en el Registro Social de Hogares, que se
+                        encuentren vigentes durante al menos uno de los últimos 12 meses. </div>
+                    </div>
+                    <!--caja que aparece cuando se carga por lote-->
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-12">
+                              <p>Nombre de la consulta: <strong>Consulta noviembre de 2019, comuna 1</strong></p>
+                              <hr>
+                            </div>
+                            <div class="col-12 row no-gutters">
+                              <p>Nº: <strong>88 consultas</strong></p>
+                              <p class="mx-md-2">Duplicados: <strong>2 consultas</strong></p>
+                              <p>Errores: <strong>1 consultas</strong></p>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                              <table class="table table-bordered table-sm">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">RUN</th>
+
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>12.345.678-9</td>
+
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>12.345.678-9</td>
+
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>12.345.678-9</td>
+
+                                  </tr>
+                                </tbody>
+                              </table>
+
+                            </div>
+                            <div class="col-12 col-md-6">
+                              <div class="alert alert-primary" role="alert"><i class="mdi mdi-information"></i> Sólo se
+                                muestran las primeras 3 filas de archivo cargado, a modo de ejemplo.</div>
+                                <div class="row no-gutters justify-content-md-between">
+                                  <div class="col-12 col-md-6 pr-md-2">
+                                    <a class="btn btn-success mb-2 w-100" href="#" role="button"><i class="mdi mdi-file-download"></i>
+                                      Descargar archivo
+                                    </a>
+                                  </div>
+                                  <div class="col-12 col-md-6">
+                                    <a class="btn btn-primary mb-2 w-100 pl-md-2" href="#" role="button"><i class="mdi mdi-reload"></i>
+                                      Cargar nuevo archivo
+                                    </a>
+                                  </div>
+
+
+                                </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!--paso 2-->
+                <li>
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Seleccione razón de consulta y adjunte justificación</h5>
+                      <div class="form-group">
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="razon1" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="razon1">Razon 1</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="razon2" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="razon2">Razon 2</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="razon3" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="razon3">Razon 3</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="razon4" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="razon4">Razon 4</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6 pb-2">
+                      <div class="form-group">
+                        <div class="custom-file">
+                          <input type="file" autofocus="autofocus" required="required" class="custom-file-input"
+                            id="archivo" lang="es">
+                          <label class="custom-file-label" for="archivo">Adjunte justificación</label>
+                          <small id="emailHelp" class="form-text text-muted">Adjunte documento de justificación de
+                            solicitud del dato</small> </div>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item px-0"><i class="mdi mdi-paperclip"></i> Documento adjunto_pdf <a
+                            href="#"> <i class="mdi mdi-delete"></i></a></li>
+                        <li class="list-group-item px-0"><i class="mdi mdi-paperclip"></i> Documento adjunto_pdf <a
+                            href="#"> <i class="mdi mdi-delete"></i></a></li>
+                      </ul>
+                      <button type="submit" class="btn btn-primary col-md-3 my-3 w-100" data-toggle="modal"
+                        data-target="#error">Continuar</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="alert alert-primary" role="alert"><i class="mdi mdi-information"></i> Ej: E-mail de
+                        jefatura que solicita, E-mail del caso, Oficio o Memo.<br>
+                        En formato, pdf, word, jpg, png, tamaño máximo
+                        2MB. </div>
+                    </div>
+                  </div>
+                </li>
+                <!--paso 3-->
+                <li>
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Seleccione reporte</h5>
+                      <form>
+                        <div class="form-group">
+                          <label for="reportes">Reportes</label>
+                          <select autofocus="autofocus" required="required" class="form-control" id="reportes">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </select>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-12">
+                      <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Reporte 1</h4>
+                        <p>Aww yeah, you successfully read this important alert message. This example text is going to
+                          run a bit longer so that you can see how spacing within an alert works with this kind of
+                          content.</p>
+                        <hr>
+                        <p class="mb-0">
+                          <button type="button" class="btn btn-success btn-sm"><i class="mdi mdi-eye"></i> Ver ejemplo
+                            de reporte</button>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <!--paso 4-->
+                <li>
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Seleccione rango de tiempo del reporte</h5>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="form-group">
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="rango1" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="rango1">02 Jul. 2020 - 02 Oct. 2020 (3 meses)</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="rango2" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="rango2">02 May. 2020 - 02 Oct. 2020 (6 meses)</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" id="rango3" name="customRadio" class="custom-control-input">
+                          <label class="custom-control-label" for="rango3">02 Oct. 2019 - 02 Oct. 2020 (12
+                            meses)</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="alert alert-primary" role="alert"><i class="mdi mdi-information"></i> El rango máximo
+                        de consulta es de 12 meses atrás.
+                        Datos históricos disponibles: x años</div>
+                    </div>
+                  </div>
+                </li>
+                <!--paso 4-->
+                <li>
+                  <div class="row">
+                    <div class="col-12">
+                      <h5>Resumen de la consulta</h5>
+                      <div class="alert alert-primary" role="alert">
+                        <div class="row">
+                          <div class="col-12 col-md-6">
+                            <p><small>Archivo a consultar</small><br>
+                              <strong>RUN_101202020.csv</strong></p>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <p><small>Razón consulta</small><br>
+                              Razón 1</p>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <p><small>Nombre consulta</small><br>
+                              Consulta noviembre de 2019, comuna 1</p>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <p><small>Documento</small><br>
+                              Archivo_adjunto.pdf</p>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <p><small>Rango de tiempo consultado</small><br>
+                              3 meses (02 Jul. 2020 - 02 Oct. 2020)</p>
+                          </div>
+                          <div class="col-12 col-md-6">
+                            <p><small>Reporte</small><br>
+                              <strong>reporte 1</strong></p>
+                          </div>
+                        </div>
+
+
+                      </div>
+                      <button type="submit" class="btn btn-outline-secondary">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" data-toggle="modal"
+                        data-target="#declaracion">Solicitar</button>
+                    </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container"><a href="http://www.desarrollosocialyfamilia.gob.cl/" target="_blank"><img
+          src="../images/logo-mds-extend.svg" alt="Ministerio de Desarrollo Social"
+          title="Ministerio de Desarrollo Social"></a></div>
+  </footer>
+</body>
+<script>// Tooltip y Popovers
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  })
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.slim.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/custom.js"></script>
+<!-- Modal carga por lote-->
+<div class="modal fade" id="lote" tabindex="-1" aria-labelledby="lote" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lote">Cargar consulta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="nombreconsulta" class="col-form-label">Nombre de la consulta</label>
+            <input type="text" class="form-control" id="nombreconsulta">
+          </div>
+          <div class="form-group">
+            <div class="custom-file">
+              <input type="file" autofocus="autofocus" required="required" class="custom-file-input" id="archivo"
+                lang="es">
+              <label class="custom-file-label" for="archivo">Seleccione archivo</label>
+              <small id="emailHelp" class="form-text text-muted">Subir archivo en formato csv, excel con un máximo 100
+                RUN,
+                sin puntos, con guion y dígito verificador</small> </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Importar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal archivo justificacion-->
+<div class="modal fade" id="error" tabindex="-1" aria-labelledby="error" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error">Documento de justificación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body"><span class="text-danger">No se adjuntado archivo de justificación de
+          solicitud del dato, favor adjuntar para continuar</span></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Adjuntar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal disclaimer-->
+<div class="modal fade" id="declaracion" tabindex="-1" aria-labelledby="declaracion" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="declaracion">Declaración jurada</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">Texto</div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Acepto</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Transparencia y Reportería RSH - CSE, Ministerio de Desarrollo Social y Familia</title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../css/bootstrap-grid.css" rel="stylesheet" type="text/css">
+  <link href="../css/main.css" rel="stylesheet" type="text/css">
+
+  <!--fonts-->
+  <link rel="stylesheet" href="../fonts/mdi/css/materialdesignicons.min.css" type="text/css">
+</head>
+
+<body class="bg-body">
+  <header class="header">
+    <nav class="navbar navbar-expand-md navbar-light bg-white mb-4 pt-0">
+      <div class="container"> <a class="navbar-brand pt-0" href="#"> <img src="../images/logo_cse-rsh.png"
+            class="mr-5 pr-5"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span
+            class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item "> <a class="nav-link" href="index.html"><i class="mdi mdi-home"></i> Inicio <span
+                  class="sr-only">(current)</span></a> </li>
+            <li class="nav-item active"> <a class="nav-link" href="#"><i class="mdi mdi-account-circle"></i> Nombre
+                Apellido</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#" tabindex="-1" aria-disabled="true"><i
+                  class="mdi mdi-close-circle"></i> Cerrar sesión</a> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <section class="banner-home2">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 col-md-6">
+          <h2 class="text-white">Consulta por RUN</h2>
+        </div>
+        <div class="col-4 col-md-6 text-right"><small class="text-white">
+            <time>{{(new DateTime("now", new DateTimeZone('America/Santiago')))->format('H:m d/m/Y')}}</time>
+          </small></div>
+      </div>
+    </div>
+  </section>
+  <section class="main">
+    <div class="container">
+      <div class="card my-3 shadow-sm">
+        <div class="card-body">
+          <ul class="nav nav-tabs flex-column flex-lg-row">
+            <li class="nav-item"> <a class="nav-link active" href="#">Consulta por RUN</a> </li>
+            <li class="nav-item"> <a class="nav-link text-black-50" href="#">Seguimiento de consultas</a> </li>
+          </ul>
+          <div class="row p-3">
+            <div class="col-12">
+              <!--mensaje perfil publico-->
+              <div class="alert alert-success p-5 text-center" role="alert">
+                <h4 class="alert-heading">Solicitud exitosa</h4>
+                <p>Su solicitud ha sido realizada con éxito. <br>
+                  Pronto recibirá los datos solicitados al email <strong>Mail@email.cl</strong></p>
+                <h1><i class="mdi mdi-email"></i> </h1>
+              </div>
+              <!--mensaje perfil interno-->
+              <div class="alert alert-info p-5 text-center" role="alert">
+                <h4 class="alert-heading">Solicitud exitosa</h4>
+                <p>Su solicitud ha sido realizada con éxito. <br>
+                  Descargue reporte. </p>
+                <button class="btn btn-info" href=""><i class="mdi mdi-file-download mdi-24px mr-1"></i>Descargar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container"><a href="http://www.desarrollosocialyfamilia.gob.cl/" target="_blank"><img
+          src="../images/logo-mds-extend.svg" alt="Ministerio de Desarrollo Social"
+          title="Ministerio de Desarrollo Social"></a></div>
+  </footer>
+</body>
+<script>// Tooltip y Popovers
+
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+  $('.popover-dismiss').popover({
+    trigger: 'focus'
+  })
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../js/jquery.slim.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/custom.js"></script>
+<!-- Modal archivo justificacion-->
+<div class="modal fade" id="error" tabindex="-1" aria-labelledby="error" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error">Documento de justificación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body"><span class="text-danger">No se adjuntado archivo de justificación de
+          solicitud del dato, favor adjuntar para continuar</span></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Adjuntar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal disclaimer-->
+<div class="modal fade" id="declaracion" tabindex="-1" aria-labelledby="declaracion" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="declaracion">Declaración jurada</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">Texto</div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Acepto</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>

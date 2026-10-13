@@ -1,0 +1,126 @@
+body {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+
+.header-info {
+    padding: 1rem;
+
+    .header-info__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+#titular {
+    .titular-container {
+        margin: 0 2.75rem;
+        .user-info {
+            .user-info__title {
+                margin-bottom: 0;
+            }
+        }
+
+    }
+    background-image: -webkit-linear-gradient( left, rgba(100, 139, 199, 1), rgba(98, 178, 107, 1));
+}
+
+#ingresos {
+    .table-container {
+        margin: 0 4.5rem;
+    }
+}
+
+
+main {
+    section {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+
+        .section-title {
+            font-weight: 700;
+
+            .circle {
+                background: #648bc7;
+                text-align: center;
+                margin-right: 5px;
+                border-radius: 50%;
+                display: inline-block;
+                padding: 10px 5px;
+            }
+        }
+    }
+}
+.card {
+    border-color: rgb(173, 173, 173, 54%)!important;
+
+}
+
+.table {
+    td:first-child {
+        border-top: none;
+    }
+    &.table-red {
+        th {
+            color: #5d494bc7;
+            border-color: #5d494b3b;
+        }
+        td {
+            color: #721c24;
+            border-color: #5d494b3b;
+        }
+    }
+    &.table-blue {
+        th {
+            color: #404c58c2;
+        }
+        td {
+            color: #004085;
+
+        }
+    }
+    &.table-green {
+        th {
+            color: #48504ac4;
+        }
+        td {
+            color: #155724;
+        }
+    }
+    &.table-yellow {
+        th {
+            color: #544e3bc7;
+        }
+        td {
+            color: #856404;
+        }
+    }
+
+    &.table-teal {
+        th {
+            color: #445052c4;
+        }
+        td {
+            color: #0c5460;
+
+        }
+    }
+}
+
+/*div {
+    page-break-inside: avoid;
+}*/
+
+
+// Fix Temporal
+.section-title {
+    font-size: 1.25rem;
+}
+#medios {
+    font-size: .9rem;
+}
+.break-page {
+    page-break-inside: avoid;
+}
+

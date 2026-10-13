@@ -1,0 +1,258 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import url("https://fonts.googleapis.com/css?family=Roboto Slab:300,400,500,600,700");
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Segoe UI", "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #484848;
+  text-align: left;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.h1,
+h1 {
+  font-family: Roboto;
+  font-size: 2rem;
+  font-weight: 400;
+}
+.h2,
+h2 {
+  font-family: Roboto;
+  font-size: 1.6875rem;
+  font-weight: 400;
+}
+.h3,
+h3 {
+  font-family: Roboto;
+  font-size: 1.4375rem;
+  font-weight: 400;
+}
+.h4,
+h4 {
+  font-family: Roboto;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.h5,
+h5 {
+  font-family: Roboto;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.h6,
+h6 {
+  font-family: Roboto;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+.bg-body {
+  background-color: #f6f6f6;
+}
+.header {
+  background-color: #ffffff;
+}
+section.banner-home {
+  width: 100%;
+  height: auto;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  background: linear-gradient(
+    90deg,
+    rgba(100, 139, 199, 1) 0%,
+    rgba(98, 178, 107, 1) 100%
+  ) !important;
+}
+section.banner-home2 {
+  width: 100%;
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(100, 139, 199, 1) 0%,
+    rgba(98, 178, 107, 1) 100%
+  ) !important;
+}
+
+.footer {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  border-top: 1px solid #e6e6e6;
+  height: 80px;
+  background-color: #ffffff;
+  margin-top: auto;
+}
+footer > .container {
+  align-items: flex-end;
+  display: flex;
+}
+footer a {
+  display: block;
+  margin-top: 33px;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+}
+
+.timeline {
+  position: relative;
+}
+
+/*Line*/
+.timeline > li::before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  background-color: #648bc7;
+  top: 0;
+  bottom: 0;
+  left: -20px;
+}
+
+/*Circle*/
+.timeline > li::after {
+  color: #fff;
+  text-align: center;
+  padding-top: 5px;
+  z-index: 10;
+  content: counter(item);
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border: 3px solid white;
+  background-color: #648bc7;
+  border-radius: 50%;
+  top: 0;
+  left: -37px;
+}
+
+/*Content*/
+.timeline > li {
+  counter-increment: item;
+  padding: 5px 10px 10px;
+  margin-left: 0px;
+  min-height: 70px;
+  position: relative;
+  background-color: white;
+  list-style: none;
+}
+.timeline > li:nth-last-child(1)::before {
+  width: 0px;
+}
+#run-info {
+  position: absolute;
+}
+@media (max-width: 992px) {
+  #run-info {
+    position: relative;
+  }
+}
+/* Colors */
+.text-primary__custom {
+  color: rgba(100, 139, 199, 1);
+}
+.text-success__custom {
+  color: rgba(98, 178, 107, 1);
+}
+.border-success__custom {
+  border-color: rgba(98, 178, 107, 1);
+}
+
+/* Pagination */
+.custom-pagination .page-link {
+    color: rgba(100, 139, 199, 1);
+}
+.custom-pagination .page-item.active .page-link {
+    background: rgba(100, 139, 199, 1);
+    border-color: rgb(64, 105, 143);
+}
+.custom-pagination .page-link:hover {
+    color: rgba(100, 139, 199, 1);
+}
+
+/* Tables */
+.custom-big-table td {
+    vertical-align: middle;
+}
+.custom-big-table td:first-child {
+    width: 12%;
+}
+/*Checkbox personalizados para SweetAlerts*/
+.swal-input-btn {
+    color: #595959;
+    border: 1px solid #a9a9a9;
+    border-radius: .25rem;
+    box-shadow: inset 0 0 0 0 lightgrey;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    padding: .75rem 1rem;
+    position: relative;
+    text-align: left;
+    transition: ease-out 0.25s;
+
+}
+.swal-input-btn:hover {
+    background: #f5f5f5;
+}
+
+.swal-input-btn.checked {
+    color: #fff;
+    box-shadow: inset 500px 0 0 0 #28a745;
+    border-color:#28a745;
+}
+
+.swal-input-btn.checked .swal-custom-checkbox {
+    border-color: #28a745;
+}
+
+.swal-input-btn .swal-custom-checkbox {
+    width: 1.6em;
+    height: 1.6em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #595959;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: ease-in 0.25s;
+}
+
+.swal-input-btn .swal-custom-checkbox:checked {
+    background: #fff url(../images/icons/check-solid-success.svg) center center no-repeat;
+    background-size: 20px;
+}
+
+.swal-input-btn .swal-checkbox-wrapper {
+    width: 30px;
+}
+
+@media (max-width: 561px) {
+    .swal-input-btn {
+        margin-top: 1rem;
+        justify-content: space-between;
+    }
+}
